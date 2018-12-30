@@ -8,6 +8,7 @@ import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.event.game.state.GameStoppingServerEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.scheduler.Task;
+import org.spongepowered.api.text.serializer.TextSerializers;
 
 import java.util.logging.Logger;
 
@@ -24,7 +25,7 @@ public class LANBroadcasterSponge {
         this.broadcaster = new LANBroadcaster(
                 LANBroadcaster.createSocket(),
                 server.getBoundAddress().get().getPort(),
-                server.getMotd().toString(),
+                translateColorCodes(server.getMotd().toPlain()),
                 server.getBoundAddress().get().getHostName(),
                 Logger.getLogger("LANBroadcaster"));
         Task.builder().execute(this.broadcaster).async().name("LANBroadcaster").submit(this);
@@ -35,4 +36,16 @@ public class LANBroadcasterSponge {
         this.broadcaster.shutdown();
         this.broadcaster = null;
     }
+
+    private static String translateColorCodes(String text) {
+        char[] b = text.toCharArray();
+        for (int i = 0; i < b.length - 1; i++) {
+            if (b[i] == '&' && "0123456789AaBbCcDdEeFfKkLlMmNnOoRr".indexOf(b[i + 1]) > -1) {
+                b[i] = '\u00A7';
+                b[i + 1] = Character.toLowerCase(b[i + 1]);
+            }
+        }
+        return new String(b);
+    }
+
 }
