@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+group 'me.bhop'
+version '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigot-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+    }
+    maven {
+        name = 'velocity-repo'
+        url = 'https://repo.velocitypowered.com/snapshots/'
+    }
+    maven {
+        name = 'sponge-repo'
+        url = 'https://repo.spongepowered.org/maven'
+    }
+}
+
+dependencies {
+    compileOnly 'org.bukkit:bukkit:1.13.1-R0.1-SNAPSHOT'
+    compileOnly 'net.md-5:bungeecord-api:1.13-SNAPSHOT'
+    compileOnly 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+    compileOnly 'org.spongepowered:spongeapi:7.1.0-SNAPSHOT'
+}

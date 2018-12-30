@@ -1,0 +1,16 @@
+**.idea**
+**\.idea\**
+**/.idea/**
+
+**.test
+**\.test
+**/.test
+.test/*
+
+**/test
+**/test/*
+
+**/build/**
+**/out/**
+
+**/.gradle/**
