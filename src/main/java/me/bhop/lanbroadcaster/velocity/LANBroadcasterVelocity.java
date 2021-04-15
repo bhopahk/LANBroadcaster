@@ -8,7 +8,7 @@ import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import me.bhop.lanbroadcaster.LANBroadcaster;
-import net.kyori.text.serializer.ComponentSerializers;
+import net.kyori.text.serializer.legacy.LegacyComponentSerializer;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
@@ -28,7 +28,7 @@ public class LANBroadcasterVelocity {
         this.broadcaster = new LANBroadcaster(
                 LANBroadcaster.createSocket(),
                 proxyServer.getBoundAddress().getPort(),
-                ComponentSerializers.LEGACY.serialize(proxyServer.getConfiguration().getMotdComponent()),
+                LegacyComponentSerializer.legacy().serialize(proxyServer.getConfiguration().getMotdComponent()),
                 proxyServer.getBoundAddress().getAddress().getHostAddress(),
                 java.util.logging.Logger.getLogger("LANBroadcaster"));
         proxyServer.getScheduler().buildTask(this, this.broadcaster).schedule();
