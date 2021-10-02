@@ -12,11 +12,15 @@ repositories {
     mavenCentral()
     maven {
         name = 'spigot-repo'
-        url = 'https://hub.spigotmc.org/nexus/content/groups/public/'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
     }
     maven {
-        name = 'velocity-repo'
-        url = 'https://repo.velocitypowered.com/snapshots/'
+        name = 'bungee-repo'
+        url = 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+    maven {
+        name 'velocity-repo'
+        url 'https://nexus.velocitypowered.com/repository/maven-public/'
     }
     maven {
         name = 'sponge-repo'
@@ -25,8 +29,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.bukkit:bukkit:1.13.1-R0.1-SNAPSHOT'
-    compileOnly 'net.md-5:bungeecord-api:1.13-SNAPSHOT'
-    compileOnly 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
-    compileOnly 'org.spongepowered:spongeapi:7.1.0-SNAPSHOT'
+    implementation 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
+    implementation 'net.md-5:bungeecord-api:1.17-R0.1-SNAPSHOT'
+    implementation 'com.velocitypowered:velocity-api:3.0.1'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.0.1'
+    implementation 'org.spongepowered:spongeapi:7.1.0-SNAPSHOT'
 }

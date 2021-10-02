@@ -14,3 +14,11 @@
 **/out/**
 
 **/.gradle/**
+
+**/bin/**
+
+.settings/
+.classpath
+.factorypath
+.project
+.vscode/
